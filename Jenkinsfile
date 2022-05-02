@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Deploy to PR') {
             when { 
-                anyof { 
+                anyOf { 
                     branch 'PR-*'
                     tag 'release-*' 
                     }
