@@ -13,17 +13,38 @@ pipeline {
                 echo 'Test'
             }
         }
-        stage('Deploy') {
-            when { tag 'release-*' }
+        stage('Deploy to Tag') {
+            when { 
+                anyOf { 
+                    tag 'release-*' 
+                    }
+                }
             steps {
-                echo 'Deploying only because this commit is tagged.............'
+                echo 'Deploying only because this commit is tagged...............'
                 
             }
         }
-        stage('Deploy') {
-            when { branch 'PR-*' }
+        stage('Deploy to PR') {
+            when { 
+                anyOf { 
+                    branch 'PR-*'
+                    }
+                }
             steps {
-                echo 'Deploying only because this commit is tagged.............'
+                echo 'Deploying only because this commit is tagged...............'
+                
+            }
+        }
+
+        stage('Deploy to Tag and PR') {
+                        when { 
+                anyOf { 
+                    branch 'PR-*'
+                    tag 'release-*' 
+                    }
+                }
+            steps {
+                echo 'Deploying only because this commit is tagged...............'
                 
             }
         }
