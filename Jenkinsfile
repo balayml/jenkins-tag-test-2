@@ -13,14 +13,14 @@ pipeline {
                 echo 'Test'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to Tag') {
             when { tag 'release-*' }
             steps {
                 echo 'Deploying only because this commit is tagged...............'
                 
             }
         }
-        stage('Deploy') {
+        stage('Deploy to PR') {
             when { branch 'PR-*' }
             steps {
                 echo 'Deploying only because this commit is tagged...............'
