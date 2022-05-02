@@ -3,13 +3,15 @@ pipeline {
         label 'Mac_Mini'
           }
     stages {
+
+        stage('Build') {
         when { 
             anyOf { 
                 branch 'PR-*'
                 tag 'release-*' 
                 }
             }
-        stage('Build') {
+
             steps {
                 echo "Build"
             }
