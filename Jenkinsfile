@@ -3,12 +3,24 @@ pipeline {
         label 'Mac_Mini'
           }
     stages {
+        when { 
+            anyOf { 
+                branch 'PR-*'
+                tag 'release-*' 
+                }
+            }
         stage('Build') {
             steps {
                 echo "Build"
             }
         }
         stage('Test') {
+        when { 
+            anyOf { 
+                branch 'PR-*'
+                tag 'release-*' 
+                }
+            }
             steps {
                 echo 'Test'
             }
@@ -37,7 +49,7 @@ pipeline {
         }
 
         stage('Deploy to Tag and PR') {
-                        when { 
+            when { 
                 anyOf { 
                     branch 'PR-*'
                     tag 'release-*' 
