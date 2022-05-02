@@ -31,7 +31,7 @@ pipeline {
                     }
                 }
             steps {
-                echo 'Deploying only because this commit is tagged...............'
+                echo 'Deploying only because this commit is tagged.................'
                 
             }
         }
@@ -44,7 +44,7 @@ pipeline {
                     }
                 }
             steps {
-                echo 'Deploying only because this commit is tagged...............'
+                echo 'Deploying only because this commit is tagged..................'
                 
             }
         }
