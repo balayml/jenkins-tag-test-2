@@ -20,5 +20,12 @@ pipeline {
                 
             }
         }
+        stage('Deploy') {
+            when { branch 'PR-*' }
+            steps {
+                echo 'Deploying only because this commit is tagged.............'
+                
+            }
+        }
     }
 }
